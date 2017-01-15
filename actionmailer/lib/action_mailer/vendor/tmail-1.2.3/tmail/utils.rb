@@ -114,6 +114,11 @@ module TMail
     lwsp         = %Q| \t\r\n|
     control      = %Q|\x00-\x1f\x7f-\xff|
 
+    aspecial.force_encoding('ASCII-8BIT')
+    tspecial.force_encoding('ASCII-8BIT')
+    lwsp.force_encoding('ASCII-8BIT')
+    control.force_encoding('ASCII-8BIT')
+
     CONTROL_CHAR  = /[#{control}]/n
     ATOM_UNSAFE   = /[#{Regexp.quote aspecial}#{control}#{lwsp}]/n
     PHRASE_UNSAFE = /[#{Regexp.quote aspecial}#{control}]/n
